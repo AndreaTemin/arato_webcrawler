@@ -17,7 +17,7 @@ Installations
 
 2. Install dependencies:
    
-   python -m venv venv 
+   python -m venv venv
    pip install -r requirements.txt
 
 Usage
