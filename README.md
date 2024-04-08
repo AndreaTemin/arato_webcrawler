@@ -1,6 +1,6 @@
 Simple Web Crawler
 
-The Simple Web Crawler is a Python script that allows you to download all pages of a website into a designated local folder. It uses the `requests` library to fetch web pages and the `BeautifulSoup` library to parse HTML content.
+This is a Python script that allows you to download all pages of a website into a designated local folder. It uses the `requests` library to fetch web pages and the `BeautifulSoup` library to parse HTML content.
 
 Features
 
