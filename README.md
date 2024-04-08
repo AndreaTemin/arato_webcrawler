@@ -1,9 +1,33 @@
-# arato_webcrawler
-1. Design a build a webcrawler, that given an entry point for a website (e.g. https://example.com) downloads all pages of the website into a designated local folder. 
-2. All pages must be downloaded once and once only
+Simple Web Crawler
 
-# Pass the website url to analyze as argument
+The Simple Web Crawler is a Python script that allows you to download all pages of a website into a designated local folder. It uses the `requests` library to fetch web pages and the `BeautifulSoup` library to parse HTML content.
 
-# function to download a page
+Features
 
-# 
+- Downloads all pages of a website recursively.
+- Saves pages in a designated local folder.
+- Handles redirects and avoids revisiting already visited URLs.
+- Allows setting a maximum depth for the crawl to prevent infinite loops.
+
+Installations
+
+1. Clone the repository:
+
+   git clone https://github.com/AndreaTemin/arato_webcrawler.git
+
+2. Install dependencies:
+   
+   python -m venv venv 
+   pip install -r requirements.txt
+
+Usage
+
+1. Run the web_crawler.py script:
+
+   python web_crawler.py
+
+2. Enter the website URL when prompted.
+3. Enter the folder path where you want to save the pages.
+
+The script will start crawling the website, downloading pages recursively and saving them in the specified folder.
+
