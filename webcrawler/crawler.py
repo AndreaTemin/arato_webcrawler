@@ -10,13 +10,13 @@ class Crawler:
         self.entry_url = entry_url
         self.folder_path = folder_path
         self.visited_urls = set()
-        max
+        self.max_depth = 7
 
     def start_crawl(self):
-        self.crawl_page(self.entry_url)
+        self.crawl_page(self.entry_url, depth=0)
 
-    def crawl_page(self, url):
-        if url in self.visited_urls:
+    def crawl_page(self, url, depth):
+        if url in self.visited_urls or depth >= self.max_depth:
             print(f"The page {url}, has already been visited")
             return
         
@@ -34,8 +34,9 @@ class Crawler:
             
             for link in links:
                 absolute_url = urljoin(url, link)
+                # check if the source is the same
                 if urlparse(absolute_url).netloc == urlparse(url).netloc:
-                    self.crawl_page(absolute_url)
+                    self.crawl_page(absolute_url, depth + 1)
 
 
     def extract_links(self, html_content):
@@ -49,7 +50,6 @@ class Crawler:
     def download_page(self, url, content):
         # getting the name of the file from the url after the .com
         filename = urlparse(url).path.replace('/', '_') + '.html'
-
         
         # storing the page locally 
         save_page(
