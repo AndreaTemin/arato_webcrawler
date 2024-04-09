@@ -21,9 +21,9 @@ Installations
 
 Usage
 
-1. Run the web_crawler.py script:
+1. Run the webcrawler script:
 
-   python web_crawler.py
+   python main.py
 
 2. Enter the website URL when prompted.
 3. Enter the folder path where you want to save the pages.
