@@ -26,12 +26,7 @@ class Crawler:
         if html_content:
             self.download_page(url, html_content)
             links = self.extract_links(html_content)
-            
-            # remove duplicates
-            links = set(links)
-            # difference between sets, remove possible duplicate, avoids possible loops
-            links.difference_update(self.visited_urls)
-            
+                        
             for link in links:
                 absolute_url = urljoin(url, link)
                 # check if the source is the same
@@ -39,12 +34,10 @@ class Crawler:
                     self.crawl_page(absolute_url, depth + 1)
 
 
-    def extract_links(self, html_content):
+    def extract_links(self, html_content) -> set:
         soup = BeautifulSoup(html_content, 'html.parser')
         links = soup.find_all('a', href=True)
-        return [link.get('href') for link in links]
-
-
+        return {link.get('href') for link in links}
 
 
     def download_page(self, url, content):
