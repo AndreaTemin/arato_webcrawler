@@ -1,6 +1,8 @@
 import os
 from crawler import Crawler
+import time
 
+NUMBER_OF_MACHINES = 4
 
 def main():
     entry_point =  input("Enter the website URL: ")
@@ -9,10 +11,16 @@ def main():
     if not os.path.exists(local_folder):
         os.makedirs(local_folder)
 
-
-    crawler = Crawler(entry_point, local_folder)
-    crawler.start_crawl()
-
+    # The Crawler class now manages its own worker processes.
+    crawler = Crawler(
+        entry_url=entry_point,
+        folder_path=local_folder,
+        num_workers=NUMBER_OF_MACHINES
+    )
+    crawler.start()
 
 if __name__ == "__main__":
+    start = time.time()
     main()
+    execution_time = time.time() - start
+    print(f"{execution_time = }")
