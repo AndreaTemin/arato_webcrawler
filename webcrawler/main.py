@@ -2,7 +2,7 @@ import os
 from crawler import Crawler
 import time
 
-NUMBER_OF_MACHINES = 4
+NUMBER_OF_THREADS = 16
 
 def main():
     entry_point =  input("Enter the website URL: ")
@@ -15,7 +15,7 @@ def main():
     crawler = Crawler(
         entry_url=entry_point,
         folder_path=local_folder,
-        num_workers=NUMBER_OF_MACHINES
+        num_workers=NUMBER_OF_THREADS
     )
     crawler.start()
 
